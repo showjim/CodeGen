@@ -39,7 +39,7 @@ from codegen_sources.model.src.utils import AttrDict, TREE_SITTER_ROOT
 SUPPORTED_LANGUAGES = ["cpp", "java", "python"]
 
 logger = create_logger(None, 0)
-
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 def get_parser():
     """
@@ -109,8 +109,8 @@ class Translator:
         encoder, decoder = build_model(self.reloaded_params, self.dico)
         self.encoder = encoder[0]
         self.decoder = decoder[0]
-        self.encoder.cuda()
-        self.decoder.cuda()
+        self.encoder.to(device) #.cuda()
+        self.decoder.to(device) #.cuda()
         self.encoder.eval()
         self.decoder.eval()
 
@@ -132,7 +132,7 @@ class Translator:
         n=1,
         beam_size=1,
         sample_temperature=None,
-        device="cuda:0",
+        device="cpu", # "cuda:0",
         tokenized=False,
         detokenize=True,
         max_tokens=None,

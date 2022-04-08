@@ -18,7 +18,7 @@ from .transformer import DECODER_ONLY_PARAMS, TransformerModel, Classifier
 from ..data.dictionary import UNK_WORD
 
 logger = getLogger()
-
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 def check_model_params(params):
     """
@@ -150,7 +150,7 @@ def set_pretrain_emb(model, dico, word2id, embeddings, gpu):
 
 
 @torch.no_grad()
-def build_model(params, dico, gpu=True):
+def build_model(params, dico, gpu=False):
     """
     Build model.
     """
@@ -277,7 +277,7 @@ def build_classifier(params):
     return [classifier.cuda()]
 
 
-def reload_transformer(params, path, dico, model, model_type, gpu=True):
+def reload_transformer(params, path, dico, model, model_type, gpu=False):
     """
     Reload a transformer state dict to current model:
     clean 'module.' from state dict,
@@ -289,7 +289,8 @@ def reload_transformer(params, path, dico, model, model_type, gpu=True):
 
     reloaded = torch.load(
         path,
-        map_location=lambda storage, loc: storage.cuda(params.local_rank)
+        # map_location=lambda storage, loc: storage.cuda(params.local_rank)
+        map_location=lambda storage, loc: storage
         if gpu
         else storage.cpu(),
     )
