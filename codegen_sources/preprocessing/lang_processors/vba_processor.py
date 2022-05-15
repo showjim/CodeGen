@@ -27,31 +27,33 @@ class VbaProcessor(LangProcessor):
     def __init__(self, root_folder=None):
 
         self.spetoken2char = {
-            "STOKEN00": "#",
-            "STOKEN1": "\\n",
-            "STOKEN2": '"""',
-            "STOKEN3": "'''",
+            "STOKEN0": "'''",
+            "STOKEN1": 'REM',
+            "STOKEN2": "\\n",
+            "STOKEN3": "\\r"
         }
         self.char2spetoken = {
             value: " " + key + " " for key, value in self.spetoken2char.items()
         }
         self.language = "vba"
-        self.ast_nodes_type_string = ["comment", "string_literal", "char_literal"]
+        self.ast_nodes_type_string = ["REMCOMMENT", "COMMENT", "STRINGLITERAL", "OCTLITERAL", "HEXLITERAL",
+                                      "SHORTLITERAL", "INTEGERLITERAL", "DOUBLELITERAL", "DATELITERAL"]
 
     def get_vba_tokens_and_types(self, file_or_string:str):
-        if Path(file_or_string).exists():
-            input_stream = antlr4.FileStream(file_or_string)
-        else:
-            input_stream = antlr4.InputStream(file_or_string)
+        # if Path(file_or_string).exists():
+        #     input_stream = antlr4.FileStream(file_or_string)
+        # else:
+        #     input_stream = antlr4.InputStream(file_or_string)
+        input_stream = antlr4.InputStream(file_or_string)
 
         # lexing
         lexer = vbaLexer(input_stream)
         stream = antlr4.CommonTokenStream(lexer)
 
-        # # parsing
-        # parser = vbaParser(stream)
-        # tree = parser.startRule()
-
+        # parsing
+        parser = vbaParser(stream)
+        tree = parser.startRule()
+        test=tree.root_node
         # Parse all tokens until EOF
         stream.fill()
 

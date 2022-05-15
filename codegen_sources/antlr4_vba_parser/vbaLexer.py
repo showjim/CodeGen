@@ -1211,7 +1211,7 @@ class vbaLexer(Lexer):
     STOP = 163
     STRING = 164
     SUB = 165
-    TAB = 166
+    TABSYMBOL = 166
     TEXT = 167
     THEN = 168
     TIME = 169
@@ -1258,7 +1258,7 @@ class vbaLexer(Lexer):
     DOUBLELITERAL = 210
     DATELITERAL = 211
     LINE_CONTINUATION = 212
-    NEWLINE = 213
+    NEW_LINE = 213
     REMCOMMENT = 214
     COMMENT = 215
     SINGLEQUOTE = 216
@@ -1295,7 +1295,7 @@ class vbaLexer(Lexer):
             "'RETURN'", "'RMDIR'", "'RSET'", "'SAVEPICTURE'", "'SAVESETTING'", 
             "'SEEK'", "'SELECT'", "'SENDKEYS'", "'SET'", "'SETATTR'", "'SHARED'", 
             "'SINGLE'", "'SPC'", "'STATIC'", "'STEP'", "'STOP'", "'STRING'", 
-            "'SUB'", "'TAB'", "'TEXT'", "'THEN'", "'TIME'", "'TO'", "'TRUE'", 
+            "'SUB'", "'TABSYMBOL'", "'TEXT'", "'THEN'", "'TIME'", "'TO'", "'TRUE'",
             "'TYPE'", "'TYPEOF'", "'UNLOAD'", "'UNLOCK'", "'UNTIL'", "'VARIANT'", 
             "'VERSION'", "'WEND'", "'WHILE'", "'WIDTH'", "'WITH'", "'WITHEVENTS'", 
             "'WRITE'", "'XOR'", "'&'", "':='", "'='", "'>='", "'>'", "'<='", 
@@ -1328,7 +1328,7 @@ class vbaLexer(Lexer):
             "REDIM", "REM", "RESET", "RESUME", "RETURN", "RMDIR", "RSET", 
             "SAVEPICTURE", "SAVESETTING", "SEEK", "SELECT", "SENDKEYS", 
             "SET", "SETATTR", "SHARED", "SINGLE", "SPC", "STATIC", "STEP", 
-            "STOP", "STRING", "SUB", "TAB", "TEXT", "THEN", "TIME", "TO", 
+            "STOP", "STRING", "SUB", "TABSYMBOL", "TEXT", "THEN", "TIME", "TO",
             "TRUE", "TYPE", "TYPEOF", "UNLOAD", "UNLOCK", "UNTIL", "VARIANT", 
             "VERSION", "WEND", "WHILE", "WIDTH", "WITH", "WITHEVENTS", "WRITE", 
             "XOR", "AMPERSAND", "ASSIGN", "DIV", "EQ", "GEQ", "GT", "LEQ", 
@@ -1336,7 +1336,7 @@ class vbaLexer(Lexer):
             "PLUS_EQ", "POW", "RPAREN", "L_SQUARE_BRACKET", "R_SQUARE_BRACKET", 
             "STRINGLITERAL", "OCTLITERAL", "HEXLITERAL", "SHORTLITERAL", 
             "INTEGERLITERAL", "DOUBLELITERAL", "DATELITERAL", "LINE_CONTINUATION", 
-            "NEWLINE", "REMCOMMENT", "COMMENT", "SINGLEQUOTE", "COLON", 
+            "NEW_LINE", "REMCOMMENT", "COMMENT", "SINGLEQUOTE", "COLON",
             "UNDERSCORE", "WS", "IDENTIFIER" ]
 
     ruleNames = [ "T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "T__6", 
@@ -1367,7 +1367,7 @@ class vbaLexer(Lexer):
                   "REDIM", "REM", "RESET", "RESUME", "RETURN", "RMDIR", 
                   "RSET", "SAVEPICTURE", "SAVESETTING", "SEEK", "SELECT", 
                   "SENDKEYS", "SET", "SETATTR", "SHARED", "SINGLE", "SPC", 
-                  "STATIC", "STEP", "STOP", "STRING", "SUB", "TAB", "TEXT", 
+                  "STATIC", "STEP", "STOP", "STRING", "SUB", "TABSYMBOL", "TEXT",
                   "THEN", "TIME", "TO", "TRUE", "TYPE", "TYPEOF", "UNLOAD", 
                   "UNLOCK", "UNTIL", "VARIANT", "VERSION", "WEND", "WHILE", 
                   "WIDTH", "WITH", "WITHEVENTS", "WRITE", "XOR", "AMPERSAND", 
@@ -1378,7 +1378,7 @@ class vbaLexer(Lexer):
                   "INTEGERLITERAL", "DOUBLELITERAL", "DATELITERAL", "DATEORTIME", 
                   "DATEVALUE", "DATEVALUEPART", "DATESEPARATOR", "MONTHNAME", 
                   "ENGLISHMONTHNAME", "ENGLISHMONTHABBREVIATION", "TIMEVALUE", 
-                  "TIMESEPARATOR", "AMPM", "LINE_CONTINUATION", "NEWLINE", 
+                  "TIMESEPARATOR", "AMPM", "LINE_CONTINUATION", "NEW_LINE",
                   "REMCOMMENT", "COMMENT", "SINGLEQUOTE", "COLON", "UNDERSCORE", 
                   "WS", "IDENTIFIER", "LETTER", "DIGIT", "LETTERORDIGIT" ]
 
